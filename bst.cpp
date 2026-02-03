@@ -3,6 +3,7 @@
 
 #include "bst.h"
 
+
 using namespace std;
 
 
@@ -65,7 +66,7 @@ void BST::insert_priv(int data, node* ptr){
     }
     else
     {
-        cout << "The number " << data << " has already been added to the tree\n";
+        throw MyException("Error: Duplicate value " + to_string(data) + " cannot be inserted.");
     }
 }
 
@@ -98,7 +99,7 @@ bool BST::search(int data)
 bool BST::search_priv(int data, node* ptr)
 {
     if (ptr == NULL)
-        return false;
+        throw MyException("Error: Cannot search in an empty tree.");
 
     if (ptr->data == data)
     {
@@ -123,8 +124,7 @@ int BST::findSmallest_priv(node* ptr)
 {
     if(root == NULL)
     {
-        cout << "The tree is empty\n";
-        return -1;
+        throw MyException("Error: Cannot find smallest value. Tree is empty.");
     }
     else
     {
@@ -190,7 +190,7 @@ void BST::delete_priv(int data, node* parent)
     }
     else
     {
-        cout <<"The tree is empty\n";
+        throw MyException("Error: Cannot delete from an empty tree.");
     }
 }
 

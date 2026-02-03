@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "bst.cpp"
+#include "bst.h"
 
 using namespace std;
 
 int main(){
     int search_input, delete_input;
     int data_values[16] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16};
-    int adversial[100] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+    /*int adversial[100] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
                         31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
                         61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
                         91, 92, 93, 94, 95, 96, 97, 98, 99, 100};
@@ -17,19 +17,24 @@ int main(){
 63, 66, 69, 72, 76, 79, 82, 85, 88, 91, 94, 97, 2, 5, 8, 11, 14, 17, 20, 23,
 27, 30, 33, 36, 39, 42, 45, 48, 52, 55, 58, 61, 64, 67, 70, 73, 77, 80, 83, 86,
 89, 92, 95, 98, 24, 49, 74, 99, 100};
-
+*/
     BST tree;
     //print_inorder
     cout << "Printing the tree in order\nBefore adding numbers\n";
 
     tree.print_inorder();
 
-    for( int i = 0; i < 100; i++)
+    try
     {
-        tree.insert(friendly[i]);
+        for( int i = 0; i < 16; i++)
+        {
+            tree.insert(data_values[i]);
+        }
     }
-
-    tree.insert(17);
+    catch(MyException &e)
+    {
+        cerr <<e.what() << endl;
+    }
 
     cout << "Printing the tree in order\nAfter adding numbers\n";
 
@@ -50,7 +55,14 @@ int main(){
     cout << "\n";
 
     //smallest value
-    cout << "The smallest value in the tree is "<< tree.findSmallest() << endl;
+    try 
+    {
+        cout << "The smallest value in the tree is "<< tree.findSmallest() << endl;
+    } 
+    catch(MyException &e)
+    {
+        cerr << e.what() << endl;
+    }
 
     //delete
     
@@ -62,7 +74,14 @@ int main(){
             if(delete_input != -1)
             {
                 cout << endl;
-                tree.delt(delete_input);
+                try
+                {
+                    tree.delt(delete_input);
+                } 
+                catch (MyException &e)
+                {
+                    cerr << e.what() << endl;
+                }
                 tree.print_inorder();
                 cout <<"\n";
             }
@@ -86,11 +105,11 @@ int main(){
     //balanced
     if(tree.isbalanced())
     {
-        cout << "The tree is balanced";
+        cout << "The tree is balanced\n";
     }
     else
     {
-        cout << "The tree is NOT balanced";
+        cout << "The tree is NOT balanced\n";
     }
 
     return 0;
