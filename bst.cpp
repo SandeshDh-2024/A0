@@ -278,7 +278,7 @@ void BST::delete_match(node* parent, node* match, bool left)
             match -> right = NULL;
             delptr = match;
             delete delptr;
-            cout << "The node containing value" << match_data << " was removed\n";
+            cout << "The node containing value " << match_data << " was removed\n";
         }
         else if( match -> left != NULL && match -> right == NULL)
         {
