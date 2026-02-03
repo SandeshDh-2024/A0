@@ -32,7 +32,7 @@ void BST::insert(int data){
 
     if(!isbalanced())
     {
-        cout <<"The tree is UNBALANCED!!";
+        cout <<"The tree is UNBALANCED after inserting value: " << data << "\n"<< endl;
     }
 }
 
@@ -146,7 +146,7 @@ void BST::delt(int data)
 
     if(!isbalanced())
     {
-        cout <<"The tree is UNBALANCED!!";
+        cout <<"The tree is UNBALANCED after deleting value: " << data << "\n"<< endl;
     }
 }
 
@@ -184,7 +184,7 @@ void BST::delete_priv(int data, node* parent)
             }
             else
             {
-                cout <<"The data" << data << " was not in the tree\n";
+                cout <<"The data " << data << " was not in the tree\n";
             }
         }
     }

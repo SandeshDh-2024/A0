@@ -1,3 +1,5 @@
+#include "customErrorClass.h"
+
 class BST{
     private:
         struct node{
