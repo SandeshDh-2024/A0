@@ -20,8 +20,20 @@ BST::node* BST::create(int data){
     return n;
 }
 
-int BST::insert(int data){
-    insert_priv(data, root);
+void BST::insert(int data){
+    if(root == NULL)
+    {
+        root = create(data);
+    }
+    else
+    {
+        insert_priv(data, root);
+    }
+
+    if(!isbalanced())
+    {
+        cout <<"The tree is UNBALANCED!!";
+    }
 }
 
 void BST::insert_priv(int data, node* ptr){
@@ -131,6 +143,11 @@ int BST::findSmallest_priv(node* ptr)
 void BST::delt(int data)
 {
     delete_priv(data, root);
+
+    if(!isbalanced())
+    {
+        cout <<"The tree is UNBALANCED!!";
+    }
 }
 
 void BST::delete_priv(int data, node* parent)
